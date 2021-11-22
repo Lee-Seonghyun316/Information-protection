@@ -1,0 +1,15 @@
+@value primaryDarkPurple,primaryPurple,basicWhite from '../../common/color.css';
+.headerLine{
+    background-color: primaryDarkPurple;
+    height: 30px;
+}
+.header {
+    padding: 0 0 0.5em 0;
+    width: 100%;
+    text-align: center;
+    background-color: primaryPurple;
+}
+
+.title {
+    color: basicWhite;
+}

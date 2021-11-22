@@ -8,6 +8,10 @@
 @value secondaryDarkPurple: #883997;
 @value secondaryLightPurple: #ee98fb;
 
+/*basic color*/
+@value basicGrey: #e0e0e0;
+@value basicWhite: #ffffff;
+
 /*디자인 참고링크*/
 /*
 https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6A1B9A&secondary.color=BA68C8

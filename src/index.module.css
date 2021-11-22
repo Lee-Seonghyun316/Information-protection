@@ -1,4 +1,4 @@
-@value primaryPurple from './common/color.css';
+@value basicGrey from './common/color.css';
 
 body {
   margin: 0;
@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: primaryPurple;
+  background-color: basicGrey;
 }
 
 code {
