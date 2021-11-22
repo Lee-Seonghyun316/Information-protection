@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from './login.module.css';
@@ -17,6 +17,13 @@ const Login = ({authService}) => {
             .login(event.currentTarget.textContent)
             .then(data => goToKeeper(data.user.uid));
     }
+
+    useEffect(()=>{
+        authService.onAuthChange(user => {
+            user && goToKeeper(user.id);
+        });
+    });
+
     return (
         <section className={styles.loginContainer}>
             <Header/>
