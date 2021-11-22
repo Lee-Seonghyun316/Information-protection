@@ -20,6 +20,8 @@ const Keeper = ({authService}) => {
     return (
         <section className={styles.keeper}>
             <Header onLogout={onLogout}/>
+            <div className={styles.container}></div>
+            <Footer/>
         </section>
     )
 };
