@@ -1,4 +1,4 @@
-@value primaryDarkPurple,primaryPurple,basicWhite from '../../common/color.css';
+@value primaryDarkPurple,primaryPurple,basicWhite,secondaryPurple from '../../common/color.css';
 .headerLine{
     background-color: primaryDarkPurple;
     height: 30px;
@@ -12,4 +12,17 @@
 
 .title {
     color: basicWhite;
+}
+
+.logout {
+    position: absolute;
+    right: 3em;
+    top: 1em;
+    padding: 0.8em;
+    border-radius: 10px;
+    background-color: secondaryPurple;
+    color: basicWhite;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
 }
