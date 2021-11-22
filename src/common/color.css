@@ -9,8 +9,10 @@
 @value secondaryLightPurple: #ee98fb;
 
 /*basic color*/
-@value basicGrey: #e0e0e0;
+@value basicGrey: #e8e7e6;
+@value basicDarkGrey: #626262;
 @value basicWhite: #ffffff;
+@value basicBlack: black;
 
 /*디자인 참고링크*/
 /*

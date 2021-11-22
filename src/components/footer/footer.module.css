@@ -1,0 +1,7 @@
+@value secondaryPurple from '../../common/color.css';
+
+footer {
+    text-align: center;
+    background: secondaryPurple;
+    padding: 0.5em;
+}
