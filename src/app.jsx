@@ -11,7 +11,7 @@ function App({authService}) {
             <BrowserRouter>
                 <Routes>
                     <Route exact path="/" element={<Login authService={authService}/>} />
-                    <Route exact path="/keeper" element={<Keeper/>} />
+                    <Route exact path="/keeper" element={<Keeper authService={authService}/>} />
                 </Routes>
             </BrowserRouter>
         </div>
