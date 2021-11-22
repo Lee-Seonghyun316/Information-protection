@@ -1,0 +1,14 @@
+/*primary color*/
+@value primaryPurple: #691b99;
+@value primaryDarkPurple: #37006a;
+@value primaryLightPurple: #9b4dcb;
+
+/*secondary color*/
+@value secondaryPurple: #ba68c8;
+@value secondaryDarkPurple: #883997;
+@value secondaryLightPurple: #ee98fb;
+
+/*디자인 참고링크*/
+/*
+https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6A1B9A&secondary.color=BA68C8
+*/
