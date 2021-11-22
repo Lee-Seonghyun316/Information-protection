@@ -2,12 +2,20 @@ import React from 'react';
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import styles from './login.module.css';
+import {useNavigate} from "react-router-dom";
 
 const Login = ({authService}) => {
-    const onLogin = event =>{
+    const navigate = useNavigate();
+    const goToKeeper = (userId) => {
+        navigate(
+            '/keeper',
+            {state: {id: userId}});
+    }
+
+    const onLogin = event => {
         authService //
             .login(event.currentTarget.textContent)
-            .then(console.log);
+            .then(data => goToKeeper(data.user.uid));
     }
     return (
         <section className={styles.loginContainer}>
