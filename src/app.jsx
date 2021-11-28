@@ -7,6 +7,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { initializeApp } from "firebase/app";
 import AuthService from './service/auth_service'
+import Qrmake from './components/qrmake/qrmake';
+import Qrscan from './components/qrscan/qrscan';
 
 function App() {
     const [app, setApp] = useState('');
@@ -33,6 +35,8 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<Login authService={new AuthService(app)}/>} />
                     <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app}/>} />
+                    <Route exact path="/make" element={<Qrmake authService={new AuthService(app)}/>} />
+                    <Route exact path="/scan" element={<Qrscan authService={new AuthService(app)}/>} />
                 </Routes>
             </BrowserRouter>
         </div>
