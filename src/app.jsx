@@ -1,5 +1,7 @@
 import './app.module.css';
 import Login from "./components/login/login";
+import QRMAKE from "./components/qrcode/makeqr";
+import SCANQR from './components/qrcode/scanqr';
 import styles from './app.module.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Keeper from "./components/keeper/keeper";
@@ -7,6 +9,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { initializeApp } from "firebase/app";
 import AuthService from './service/auth_service'
+
+
 
 function App() {
     const [app, setApp] = useState('');
@@ -33,6 +37,10 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={<Login authService={new AuthService(app)}/>} />
                     <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app}/>} />
+                    <Route exact path="/makeqr" element={<QRMAKE authService={new AuthService(app)} app={app}/>} />
+                    <Route exact path="/scanqr" element={<SCANQR authService={new AuthService(app)} app={app}/>} />
+
+                    
                 </Routes>
             </BrowserRouter>
         </div>
