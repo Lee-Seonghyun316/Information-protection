@@ -1,0 +1,116 @@
+@value lightBlue from '../../common/color.css';
+@value primaryBlue from '../../common/color.css';
+@value darkBlue from '../../common/color.css';
+@value basicWhite from '../../common/color.css';
+@value basicBlack from '../../common/color.css';
+
+.section{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    transition: 0.5s;
+    background-image: linear-gradient( 109.6deg, rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% );
+}
+
+.wrapper {
+    position: relative;
+    width: 800px;
+    height: 500px;
+}
+
+.info {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 50%;
+    height: 420px;
+    background-color: rgba(255,255,255,0.2);
+    box-shadow: 0 5px 45px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h2 {
+    color: basicWhite;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.button {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: basicWhite;
+    color: basicBlack;
+    font-weight: 700;
+    border: none;
+    font-size: 16px;
+}
+
+.formBox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: basicWhite;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 45px rgba(0,0,0,0.25);
+    transition: 0.5s all ease-in;
+    border-radius: 5%;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    transition: 0.5s;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: basicBlack;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.form input {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    border: 1px solid basicBlack;
+}
+
+.button {
+    background-color: primaryBlue;
+    border: none;
+    color: basicWhite;
+    max-width: 120px;
+    cursor: pointer;
+    align-items: center;
+}

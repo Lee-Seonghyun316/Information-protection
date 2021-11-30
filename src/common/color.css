@@ -14,6 +14,16 @@
 @value basicWhite: #ffffff;
 @value basicBlack: black;
 
+/*orange line*/
+@value primaryOrange: #fb8c00;
+@value lightOrange: #ffbd45;
+@value darkOrange: #c25e00;
+
+/*blue line*/
+@value primaryBlue: #2196f3;
+@value lightBlue: #6ec6ff;
+@value darkBlue: #0069c0;
+
 /*디자인 참고링크*/
 /*
 https://material.io/resources/color/#!/?view.left=0&view.right=0&primary.color=6A1B9A&secondary.color=BA68C8
