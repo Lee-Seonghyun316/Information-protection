@@ -5,7 +5,7 @@ import Footer from "../footer/footer";
 import {useNavigate} from "react-router-dom";
 import 'material-icons/iconfont/filled.css';
 
-const Keeper = ({authService, infoRepository}) => {
+const Keeper = ({authService}) => {
     const navigate = useNavigate();
     const historyState = navigate?.location?.state;
     const [userId, setUserId] = useState(historyState && historyState.id);

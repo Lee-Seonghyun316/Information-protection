@@ -16,6 +16,7 @@ const Qrmake = ({authService, infoRepository}) => {
     const onLogout = () => {
         authService.logout();
     }
+
     useEffect(() => {
         authService.onAuthChange(user => {
             if(user){

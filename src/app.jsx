@@ -35,7 +35,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route exact path="/" element={<Login authService={new AuthService(app)}/>} />
-                    <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app} infoRepository={new InfoRepository(app)}/>} />
+                    <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app}/>} />
                     <Route exact path="/make" element={<Qrmake authService={new AuthService(app)} infoRepository={new InfoRepository(app)}/> } />
                     <Route exact path="/scan" element={<Qrscan authService={new AuthService(app)}/>} />
                 </Routes>
