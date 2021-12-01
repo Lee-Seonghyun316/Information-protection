@@ -9,6 +9,7 @@ import { initializeApp } from "firebase/app";
 import AuthService from './service/auth_service'
 import Qrmake from './components/qrmake/qrmake';
 import Qrscan from './components/qrscan/qrscan';
+import InfoRepository from "./components/infoRepository/infoRepository";
 
 function App() {
     const [app, setApp] = useState('');
@@ -34,8 +35,8 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route exact path="/" element={<Login authService={new AuthService(app)}/>} />
-                    <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app}/>} />
-                    <Route exact path="/make" element={<Qrmake authService={new AuthService(app)}/>} />
+                    <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app} infoRepository={new InfoRepository(app)}/>} />
+                    <Route exact path="/make" element={<Qrmake authService={new AuthService(app)} infoRepository={new InfoRepository(app)}/> } />
                     <Route exact path="/scan" element={<Qrscan authService={new AuthService(app)}/>} />
                 </Routes>
             </BrowserRouter>

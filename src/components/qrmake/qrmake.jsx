@@ -4,7 +4,10 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './qrmake.module.css';
 
-const Qrmake = ({authService}) => {
+const Qrmake = ({authService, infoRepository}) => {
+    const navigate = useNavigate();
+    const historyState = navigate?.location?.state;
+    const [userId, setUserId] = useState(historyState && historyState.id);
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
@@ -13,10 +16,12 @@ const Qrmake = ({authService}) => {
     const onLogout = () => {
         authService.logout();
     }
-    const navigate = useNavigate();
     useEffect(() => {
         authService.onAuthChange(user => {
-            if (!user) {
+            if(user){
+                setUserId(user.uid);
+            }
+            else {
                 navigate('/');
             }
         });
@@ -26,6 +31,7 @@ const Qrmake = ({authService}) => {
         e.preventDefault();
         const url = `https://chart.googleapis.com/chart?cht=qr&chl=${name}${phone}${address}&chs=300x300`;
         imgRef.current.src = url;
+        infoRepository.saveInfo(userId, url);
     }
     return (
         <section className={styles.section}>

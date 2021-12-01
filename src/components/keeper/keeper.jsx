@@ -1,25 +1,30 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './keeper.module.css'
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import {useNavigate} from "react-router-dom";
 import 'material-icons/iconfont/filled.css';
 
-const Keeper = ({authService}) => {
+const Keeper = ({authService, infoRepository}) => {
+    const navigate = useNavigate();
+    const historyState = navigate?.location?.state;
+    const [userId, setUserId] = useState(historyState && historyState.id);
     const onLogout = () => {
         authService.logout();
     }
-    const navigate = useNavigate();
     useEffect(() => {
         authService.onAuthChange(user => {
-            if (!user) {
+            if(user){
+                setUserId(user.uid);
+            }
+            else {
                 navigate('/');
             }
         });
     });
     const moveToMake = (e) => {
         e.preventDefault();
-        navigate('/make')
+        navigate('/make', {state: {id: userId}})
     }
     const moveToScan = (e) => {
         e.preventDefault();
