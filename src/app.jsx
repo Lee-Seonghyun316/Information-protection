@@ -7,8 +7,8 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {initializeApp} from "firebase/app";
 import AuthService from './service/auth_service'
-import Qrmake from './components/qrmake/qrmake';
-import Qrscan from './components/qrscan/qrscan';
+import MakeQR from './components/qrmake/MakeQR.jsx';
+import ScanQR from './components/qrscan/scanQR';
 import InfoRepository from "./components/infoRepository/infoRepository";
 import {css} from "@emotion/react";
 import PacmanLoader from "react-spinners/PacmanLoader";
@@ -46,9 +46,9 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Login authService={new AuthService(app)}/>}/>
                 <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app}/>}/>
-                <Route exact path="/make" element={<Qrmake authService={new AuthService(app)}
+                <Route exact path="/make" element={<MakeQR authService={new AuthService(app)}
                                                            infoRepository={new InfoRepository(app)}/>}/>
-                <Route exact path="/scan" element={<Qrscan authService={new AuthService(app)}/>}/>
+                <Route exact path="/scan" element={<ScanQR authService={new AuthService(app)}/>}/>
             </Routes>
         </BrowserRouter>
     ) : (

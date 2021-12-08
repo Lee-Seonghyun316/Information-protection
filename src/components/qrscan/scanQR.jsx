@@ -10,7 +10,7 @@ const handleError = err => {
     console.log(err);
 }
 
-const Qrscan = () => {
+const ScanQR = () => {
     return (
         <div className={styles.container}>
             <p>QR </p>
@@ -24,4 +24,4 @@ const Qrscan = () => {
     )
 }
 
-export default Qrscan
+export default ScanQR

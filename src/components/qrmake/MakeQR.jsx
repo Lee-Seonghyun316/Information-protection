@@ -4,7 +4,7 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './qrmake.module.css';
 
-const Qrmake = ({authService, infoRepository}) => {
+const MakeQR = ({authService, infoRepository}) => {
     const navigate = useNavigate();
     const historyState = navigate?.location?.state;
     const [userId, setUserId] = useState(historyState && historyState.id);
@@ -69,4 +69,4 @@ const Qrmake = ({authService, infoRepository}) => {
     )
 }
 
-export default Qrmake;
+export default MakeQR;
