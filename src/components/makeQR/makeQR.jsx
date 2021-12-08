@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import {useNavigate} from 'react-router';
 import Footer from '../footer/footer';
 import Header from '../header/header';
-import styles from './qrmake.module.css';
+import styles from './makeQR.module.css';
 import CryptoJS from "crypto-js";
 
 const MakeQR = ({authService, infoRepository}) => {
