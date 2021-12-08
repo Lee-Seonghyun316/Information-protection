@@ -3,7 +3,7 @@ import QrReader from 'react-qr-reader';
 import styles from './qrscan.module.css';
 
 const handleScan = data => {
-
+    console.log(data);
 }
 
 const handleError = err => {
