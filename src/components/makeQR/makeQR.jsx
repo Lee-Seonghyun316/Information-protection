@@ -14,15 +14,6 @@ const MakeQR = ({authService, infoRepository}) => {
     const [address, setAddress] = useState('');
     const imgRef = useRef();
 
-    const data = {
-        name: "test",
-        age: 30,
-        phone: "44444444",
-    };
-
-    const encryptData = encrypt(data, "secret-key-1");
-    const decryptData = decrypt(encryptData, "secret-key-1");
-
     const onLogout = () => {
         authService.logout();
     }
@@ -39,7 +30,13 @@ const MakeQR = ({authService, infoRepository}) => {
 
     const generateQR = (e) => {
         e.preventDefault();
-        const url = `https://chart.googleapis.com/chart?cht=qr&chl=${name}${phone}${address}&chs=300x300`;
+        const data = {
+            name: name,
+            phone: phone,
+            address: address,
+        };
+        const encryptData = encrypt(data, "secret-key-1");
+        const url = `https://chart.googleapis.com/chart?cht=qr&chl=${encryptData}&chs=300x300`;
         imgRef.current.src = url;
         const QR = {
             id: Date.now(),
