@@ -1,6 +1,6 @@
 import React from 'react'
 import QrReader from 'react-qr-reader';
-import styles from './scanQR.module.css';
+import styles from './QR.module.css';
 import {decrypt} from "../encryption/encrypt";
 
 const handleScan = QRdata => {

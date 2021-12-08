@@ -7,8 +7,8 @@ import {useEffect, useState} from 'react';
 import axios from 'axios';
 import {initializeApp} from "firebase/app";
 import AuthService from './service/auth_service'
-import MakeQR from './components/makeQR/makeQR.jsx';
-import ScanQR from './components/scanQR/scanQR';
+import MakeQR from './components/QR/makeQR.jsx';
+import ScanQR from './components/QR/scanQR';
 import InfoRepository from "./components/infoRepository/infoRepository";
 import {css} from "@emotion/react";
 import PacmanLoader from "react-spinners/PacmanLoader";
