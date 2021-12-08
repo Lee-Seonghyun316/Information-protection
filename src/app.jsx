@@ -3,17 +3,27 @@ import Login from "./components/login/login";
 import styles from './app.module.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Keeper from "./components/keeper/keeper";
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import axios from 'axios';
-import { initializeApp } from "firebase/app";
+import {initializeApp} from "firebase/app";
 import AuthService from './service/auth_service'
 import Qrmake from './components/qrmake/qrmake';
 import Qrscan from './components/qrscan/qrscan';
 import InfoRepository from "./components/infoRepository/infoRepository";
+import {css} from "@emotion/react";
+import PacmanLoader from "react-spinners/PacmanLoader";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 
 function App() {
     const [app, setApp] = useState('');
     const [loading, setLoading] = useState(false);
+    const [color, setColor] = useState("#37006a");
+
     useEffect(() => {
         const getRandomLists = async () => {
             try {
@@ -28,22 +38,26 @@ function App() {
             }
         };
         getRandomLists();
-    },[])
+    }, [])
 
-    return loading ? (
-        <div className={styles.app}>
-            <BrowserRouter>
-                <Routes>
-                    <Route exact path="/" element={<Login authService={new AuthService(app)}/>} />
-                    <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app}/>} />
-                    <Route exact path="/make" element={<Qrmake authService={new AuthService(app)} infoRepository={new InfoRepository(app)}/> } />
-                    <Route exact path="/scan" element={<Qrscan authService={new AuthService(app)}/>} />
-                </Routes>
-            </BrowserRouter>
-        </div>
+    return <div className={styles.app}>
+        {loading ? (
+        <BrowserRouter>
+            <Routes>
+                <Route exact path="/" element={<Login authService={new AuthService(app)}/>}/>
+                <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app}/>}/>
+                <Route exact path="/make" element={<Qrmake authService={new AuthService(app)}
+                                                           infoRepository={new InfoRepository(app)}/>}/>
+                <Route exact path="/scan" element={<Qrscan authService={new AuthService(app)}/>}/>
+            </Routes>
+        </BrowserRouter>
     ) : (
-        <div>loading...</div>
-    );
+        <div className="sweet-loading">
+            <PacmanLoader
+                color={color} loading={loading} css={override} size={50}/>
+        </div>
+    )}
+    </div>
 }
 
 export default App;
