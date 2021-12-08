@@ -114,3 +114,7 @@ h3 {
     cursor: pointer;
     align-items: center;
 }
+
+.img {
+    border: none;
+}

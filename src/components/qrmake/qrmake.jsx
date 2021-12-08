@@ -59,7 +59,7 @@ const Qrmake = ({authService, infoRepository}) => {
                     </div>
                     <div className={styles.info}>
                         <div className={styles.box}>
-                            <img ref={imgRef} src="" alt="qr" className={styles.img} />
+                            <img ref={imgRef} src="" alt="" className={styles.img} />
                         </div>
                     </div>
                 </div>

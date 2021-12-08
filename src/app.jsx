@@ -41,7 +41,7 @@ function App() {
     }, [])
 
     return <div className={styles.app}>
-        {false ? (
+        {loading ? (
         <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={<Login authService={new AuthService(app)}/>}/>
