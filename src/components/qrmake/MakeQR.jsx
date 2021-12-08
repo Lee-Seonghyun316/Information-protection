@@ -32,7 +32,11 @@ const MakeQR = ({authService, infoRepository}) => {
         e.preventDefault();
         const url = `https://chart.googleapis.com/chart?cht=qr&chl=${name}${phone}${address}&chs=300x300`;
         imgRef.current.src = url;
-        infoRepository.saveInfo(userId, url);
+        const QR = {
+            id : Date.now(),
+            url : url,
+        }
+        infoRepository.saveInfo(userId, QR);
     }
     return (
         <section className={styles.section}>
