@@ -1,7 +1,7 @@
 import React from 'react'
 import QrReader from 'react-qr-reader';
 import styles from './scanQR.module.css';
-import {decrypt, encrypt} from "../encryption/encrypt";
+import {decrypt} from "../encryption/encrypt";
 
 const handleScan = QRdata => {
     if(QRdata){

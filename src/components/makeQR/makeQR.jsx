@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './makeQR.module.css';
-import {encrypt, decrypt} from "../encryption/encrypt";
+import {encrypt} from "../encryption/encrypt";
 
 const MakeQR = ({authService, infoRepository}) => {
     const navigate = useNavigate();
@@ -51,7 +51,7 @@ const MakeQR = ({authService, infoRepository}) => {
                 <div className={styles.wrapper}>
                     <div className={styles.formBox}>
                         <form className={styles.form}>
-                            <h3>정보를 입력하세요</h3>
+                            <h3 className={styles.title}>정보를 입력하세요</h3>
                             <input
                                 placeholder="이름"
                                 onChange={e => setName(e.target.value)}
