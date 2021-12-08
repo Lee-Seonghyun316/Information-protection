@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import styles from './makeQR.module.css';
-import CryptoJS from "crypto-js";
+import {encrypt, decrypt} from "../encryption/encrypt";
 
 const MakeQR = ({authService, infoRepository}) => {
     const navigate = useNavigate();
@@ -14,33 +14,14 @@ const MakeQR = ({authService, infoRepository}) => {
     const [address, setAddress] = useState('');
     const imgRef = useRef();
 
-    const encrypt = (data, key) => {
-        console.log(data, "text1");
-        const result = CryptoJS.AES.encrypt(JSON.stringify(data), key).toString();
-        console.log(result, "text2");
-        return result;
-    }
-    const decrypt = (text, key) => {
-        try {
-            console.log(text, "decryption1")
-            const bytes = CryptoJS.AES.decrypt(text, key);
-            const result = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-            console.log(result, "decryption2");
-            return result;
-        } catch (err) {
-            console.error(err);
-            return;
-        }
-    }
-
     const data = {
         name: "test",
         age: 30,
         phone: "44444444",
     };
 
-    const text = encrypt(data, "secret-key-1");
-    decrypt(text, "secret-key-1");
+    const encryptData = encrypt(data, "secret-key-1");
+    const decryptData = decrypt(encryptData, "secret-key-1");
 
     const onLogout = () => {
         authService.logout();
