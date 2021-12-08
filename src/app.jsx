@@ -41,7 +41,7 @@ function App() {
     }, [])
 
     return <div className={styles.app}>
-        {loading ? (
+        {false ? (
         <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={<Login authService={new AuthService(app)}/>}/>
@@ -53,8 +53,9 @@ function App() {
         </BrowserRouter>
     ) : (
         <div className="sweet-loading">
+            <h4>loading...</h4>
             <PacmanLoader
-                color={color} loading={loading} css={override} size={50}/>
+                color={color} loading={loading} css={override} size={25}/>
         </div>
     )}
     </div>
