@@ -6,7 +6,7 @@ import {decrypt} from "../encryption/encrypt";
 const handleScan = QRdata => {
     if(QRdata){
         console.log(QRdata, typeof(QRdata), "handleScan1");
-        const decryptData = decrypt(QRdata, "secret-key-1");
+        const decryptData = decrypt(QRdata, process.env.REACT_APP_ENCRYPT_KEY);
         console.log(decryptData, "handleScan2")
     }
 }
