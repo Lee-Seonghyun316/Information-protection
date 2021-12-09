@@ -87,6 +87,10 @@ h2 {
     border-radius: 5%;
 }
 
+.column {
+    flex-direction: column;
+}
+
 .form {
     width: 100%;
     display: flex;
@@ -130,6 +134,11 @@ h3 {
 }
 
 .qrReader {
-    width: 50vw;
-    height: 50vh;
+    width: 100%;
 }
+.contentWrap{
+
+}
+.content{
+}
+
