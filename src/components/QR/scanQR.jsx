@@ -11,7 +11,7 @@ const ScanQR = ({authService}) => {
     const handleScan = QRdata => {
         if (QRdata) {
             console.log(QRdata, typeof (QRdata), "handleScan1");
-            const decryptData = decrypt(QRdata, "secret-key-1");
+            const decryptData = decrypt(QRdata, 'sHiN6fO-pRoT12eCtion-sEc4rEt-kE-Y-91048');
             if (!decryptData) {
                 QRContentRef.current.innerText = "QR 코드 인식 오류 :( ";
             } else {
