@@ -12,20 +12,31 @@ const ScanQR = ({authService}) => {
     const historyState = navigate?.location?.state;
     const [userId, setUserId] = useState(historyState && historyState.id);
 
+    const clientId = [{
+        index: 1,
+        id: '2jvJ9flJM1NME2br3tFVnr4lNPn1',
+    }]
+
     const handleScan = QRdata => {
         if (QRdata) {
             console.log(QRdata, typeof (QRdata), "handleScan1");
             // const decryptData = decrypt(QRdata, 'sHiN6fO-pRoT12eCtion-sEc4rEt-kE-Y-91048');
-            const secretKey = '2jvJ9flJM1NME2br3tFVnr4lNPn1'+userId;
-            console.log(secretKey, 'secretKey & scanQR')
-            const decryptData = decrypt(QRdata, secretKey);
-            if (!decryptData) {
-                QRContentRef.current.innerText = "QR 코드 인식 오류 :( ";
-            } else {
-                // QRContentRef.current.innerText = `${decryptData.data}`;
-                QRContentRef.current.innerText = `😀 이름 : ${decryptData.name} \n📞 전화번호 : ${decryptData.phone} \n🏠 주소 : ${decryptData.address}`;
+            for (let i = 0; i < clientId.length; i++) {
+                const secretKey = 'infoKey' + clientId[i].id;
+                console.log(secretKey, 'secretKey & scanQR');
+                const decryptData = decrypt(QRdata, secretKey);
+                if (!decryptData) {
+                    QRContentRef.current.innerText = "QR 코드 인식중..";
+                    if (i === clientId.length - 1) {
+                        QRContentRef.current.innerText = "QR 코드 오류 :(";
+                    }
+                } else {
+                    QRContentRef.current.innerText = `😀 이름 : ${decryptData.name} \n📞 전화번호 : ${decryptData.phone} \n🏠 주소 : ${decryptData.address}`;
+                    console.log(decryptData, "handleScan2");
+                    break;
+                }
             }
-            console.log(decryptData, "handleScan2")
+
         }
     }
 
