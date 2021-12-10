@@ -11,11 +11,14 @@ const ScanQR = ({authService}) => {
     const handleScan = QRdata => {
         if (QRdata) {
             console.log(QRdata, typeof (QRdata), "handleScan1");
-            const decryptData = decrypt(QRdata, 'sHiN6fO-pRoT12eCtion-sEc4rEt-kE-Y-91048');
+            // const decryptData = decrypt(QRdata, 'sHiN6fO-pRoT12eCtion-sEc4rEt-kE-Y-91048');
+            const secretKey = 'secretKey123';
+            const decryptData = decrypt(QRdata, secretKey);
             if (!decryptData) {
                 QRContentRef.current.innerText = "QR 코드 인식 오류 :( ";
             } else {
-                QRContentRef.current.innerText = `😀 이름 : ${decryptData.data.name} \n📞 전화번호 : ${decryptData.data.phone} \n🏠 주소 : ${decryptData.data.address}`;
+                // QRContentRef.current.innerText = `${decryptData.data}`;
+                QRContentRef.current.innerText = `😀 이름 : ${decryptData.name} \n📞 전화번호 : ${decryptData.phone} \n🏠 주소 : ${decryptData.address}`;
             }
             console.log(decryptData, "handleScan2")
         }
