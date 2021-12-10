@@ -33,22 +33,27 @@ const ScanQR = ({authService, infoRepository}) => {
         if (QRdata) {
             console.log(QRdata, typeof (QRdata), "handleScan1");
             // const decryptData = decrypt(QRdata, 'sHiN6fO-pRoT12eCtion-sEc4rEt-kE-Y-91048');
-            for (let i = 0; i < clientIds.length; i++) {
-                const secretKey = 'infoKey' + clientIds[i].id;
-                console.log(secretKey, 'secretKey & scanQR');
-                const decryptData = decrypt(QRdata, secretKey);
-                if (!decryptData) {
-                    QRContentRef.current.innerText = "QR 코드 인식중..";
-                    if (i === clientIds.length - 1) {
-                        QRContentRef.current.innerText = "QR 코드 오류 :(";
+            if (clientIds) {
+                console.log(clientIds, 'clientIds');
+                for (let i = 0; i < clientIds?.length; i++) {
+                    const secretKey = 'infoKey' + clientIds[i].id;
+                    console.log(secretKey, 'secretKey & scanQR');
+                    const decryptData = decrypt(QRdata, secretKey);
+                    if (!decryptData) {
+                        QRContentRef.current.innerText = "QR 코드 인식중..";
+                        if (i === clientIds.length - 1) {
+                            QRContentRef.current.innerText = "QR 코드 오류 :(";
+                        }
+                    } else {
+                        QRContentRef.current.innerText = `😀 이름 : ${decryptData.name} \n📞 전화번호 : ${decryptData.phone} \n🏠 주소 : ${decryptData.address}`;
+                        console.log(decryptData, "handleScan2");
+                        break;
                     }
-                } else {
-                    QRContentRef.current.innerText = `😀 이름 : ${decryptData.name} \n📞 전화번호 : ${decryptData.phone} \n🏠 주소 : ${decryptData.address}`;
-                    console.log(decryptData, "handleScan2");
-                    break;
                 }
             }
-
+            else {
+                QRContentRef.current.innerText = "정보 확인 권한 없음 :( \n 👩 권한 요청:mn031621019@gmail.com";
+            }
         }
     }
 

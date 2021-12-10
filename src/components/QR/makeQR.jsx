@@ -36,7 +36,6 @@ const MakeQR = ({authService, infoRepository}) => {
             address: address,
         };
         const secretKey = 'infoKey' + userId;
-        // const encryptData = encrypt(data, 'sHiN6fO-pRoT12eCtion-sEc4rEt-kE-Y-91048');
         const encryptData = encrypt(data, secretKey);
         const url = `https://chart.googleapis.com/chart?cht=qr&chl=${encryptData}&chs=300x300`;
         imgRef.current.src = url;
