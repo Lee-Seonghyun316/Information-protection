@@ -36,7 +36,7 @@ const Keeper = ({authService}) => {
             <div className={styles.container}>
                 <div className={styles.box}>
                     <div className={styles.icon}>
-                        <span class="material-icons" style={{fontSize: '36px'}}>lock</span>
+                        <span className="material-icons" style={{fontSize: '36px'}}>lock</span>
                     </div>
                     <div className={styles.content}>
                         <h3>QR코드 생성하기</h3>
@@ -47,7 +47,7 @@ const Keeper = ({authService}) => {
                 </div>
                 <div className={styles.box}>
                     <div className={styles.icon}>
-                    <span class="material-icons" style={{fontSize: '36px'}}>search</span>
+                    <span className="material-icons" style={{fontSize: '36px'}}>search</span>
                     </div>
                     <div className={styles.content}>
                         <h3>QR코드 스캔하기</h3>
