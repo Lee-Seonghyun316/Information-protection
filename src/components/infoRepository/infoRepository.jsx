@@ -5,7 +5,7 @@ class InfoRepository {
         this.db = getDatabase(app);
     }
     syncInfos(userId, onUpdate) {
-        const query = ref(this.db, `${userId}/QRs`);
+        const query = ref(this.db, `${userId}/clientIds`);
         onValue(query, (snapshot) => {
             const value = snapshot.val();
             value && onUpdate(value);

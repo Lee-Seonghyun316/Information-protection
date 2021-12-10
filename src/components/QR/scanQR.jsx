@@ -5,29 +5,41 @@ import {decrypt} from "../encryption/encrypt";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import {useNavigate} from "react-router";
+import InfoRepository from "../infoRepository/infoRepository";
 
-const ScanQR = ({authService}) => {
+const ScanQR = ({authService, infoRepository}) => {
     const QRContentRef = useRef();
     const navigate = useNavigate();
     const historyState = navigate?.location?.state;
     const [userId, setUserId] = useState(historyState && historyState.id);
 
-    const clientId = [{
-        index: 1,
-        id: '2jvJ9flJM1NME2br3tFVnr4lNPn1',
-    }]
+    const [clientIds, setClientIds] = useState();
+
+    useEffect(() => {
+        if (!userId) {
+            console.log('!userId');
+            return;
+        }
+        console.log(userId, 'userId');
+        console.log(clientIds, 'clientIds1')
+        const stopSync = infoRepository.syncInfos(userId, clientIds => {
+            setClientIds(clientIds);
+        });
+        return () => stopSync();
+        console.log(clientIds, 'clientIds2')
+    }, [userId, infoRepository]);
 
     const handleScan = QRdata => {
         if (QRdata) {
             console.log(QRdata, typeof (QRdata), "handleScan1");
             // const decryptData = decrypt(QRdata, 'sHiN6fO-pRoT12eCtion-sEc4rEt-kE-Y-91048');
-            for (let i = 0; i < clientId.length; i++) {
-                const secretKey = 'infoKey' + clientId[i].id;
+            for (let i = 0; i < clientIds.length; i++) {
+                const secretKey = 'infoKey' + clientIds[i].id;
                 console.log(secretKey, 'secretKey & scanQR');
                 const decryptData = decrypt(QRdata, secretKey);
                 if (!decryptData) {
                     QRContentRef.current.innerText = "QR 코드 인식중..";
-                    if (i === clientId.length - 1) {
+                    if (i === clientIds.length - 1) {
                         QRContentRef.current.innerText = "QR 코드 오류 :(";
                     }
                 } else {
@@ -52,11 +64,13 @@ const ScanQR = ({authService}) => {
         authService.onAuthChange(user => {
             if (user) {
                 setUserId(user.uid);
+                console.log(userId, 'userId');
             } else {
                 navigate('/');
             }
         });
     });
+
 
     return (
         <section className={styles.section}>

@@ -42,22 +42,23 @@ function App() {
 
     return <div className={styles.app}>
         {loading ? (
-        <BrowserRouter>
-            <Routes>
-                <Route exact path="/" element={<Login authService={new AuthService(app)}/>}/>
-                <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app}/>}/>
-                <Route exact path="/make" element={<MakeQR authService={new AuthService(app)}
-                                                           infoRepository={new InfoRepository(app)}/>}/>
-                <Route exact path="/scan" element={<ScanQR authService={new AuthService(app)}/>}/>
-            </Routes>
-        </BrowserRouter>
-    ) : (
-        <div className="sweet-loading">
-            <h4>loading...</h4>
-            <PacmanLoader
-                color={color} loading={loading} css={override} size={25}/>
-        </div>
-    )}
+            <BrowserRouter>
+                <Routes>
+                    <Route exact path="/" element={<Login authService={new AuthService(app)}/>}/>
+                    <Route exact path="/keeper" element={<Keeper authService={new AuthService(app)} app={app}/>}/>
+                    <Route exact path="/make" element={<MakeQR authService={new AuthService(app)}
+                                                               infoRepository={new InfoRepository(app)}/>}/>
+                    <Route exact path="/scan" element={<ScanQR authService={new AuthService(app)}
+                                                               infoRepository={new InfoRepository(app)}/>}/>
+                </Routes>
+            </BrowserRouter>
+        ) : (
+            <div className="sweet-loading">
+                <h4>loading...</h4>
+                <PacmanLoader
+                    color={color} loading={loading} css={override} size={25}/>
+            </div>
+        )}
     </div>
 }
 
