@@ -1,18 +1,23 @@
-import React, {useRef} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import QrReader from 'react-qr-reader';
 import styles from './QR.module.css';
 import {decrypt} from "../encryption/encrypt";
 import Header from "../header/header";
 import Footer from "../footer/footer";
+import {useNavigate} from "react-router";
 
 const ScanQR = ({authService}) => {
     const QRContentRef = useRef();
+    const navigate = useNavigate();
+    const historyState = navigate?.location?.state;
+    const [userId, setUserId] = useState(historyState && historyState.id);
 
     const handleScan = QRdata => {
         if (QRdata) {
             console.log(QRdata, typeof (QRdata), "handleScan1");
             // const decryptData = decrypt(QRdata, 'sHiN6fO-pRoT12eCtion-sEc4rEt-kE-Y-91048');
-            const secretKey = 'secretKey123';
+            const secretKey = '2jvJ9flJM1NME2br3tFVnr4lNPn1'+userId;
+            console.log(secretKey, 'secretKey & scanQR')
             const decryptData = decrypt(QRdata, secretKey);
             if (!decryptData) {
                 QRContentRef.current.innerText = "QR 코드 인식 오류 :( ";
@@ -31,6 +36,16 @@ const ScanQR = ({authService}) => {
     const onLogout = () => {
         authService.logout();
     }
+
+    useEffect(() => {
+        authService.onAuthChange(user => {
+            if (user) {
+                setUserId(user.uid);
+            } else {
+                navigate('/');
+            }
+        });
+    });
 
     return (
         <section className={styles.section}>
